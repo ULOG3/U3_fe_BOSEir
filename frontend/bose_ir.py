@@ -2,6 +2,9 @@
 BoseIR — our internal representation of a model (our answer to what Relax
 is to TVM: this is the name of OUR graph-level IR specifically).
 
+In order to honour Netaji Subhas Chandra Bose,  greatest freedom fighters of all time, we have named our internal representaion(IR) to honour him
+
+
 Three building blocks:
     Tensor  — one piece of data flowing through the graph (a name, a shape,
               a dtype, and who produces/consumes it)
