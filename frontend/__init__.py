@@ -1,4 +1,6 @@
-"""
+"""While learning the frontend part, we realized that the entire compiler stack can feel a little tough at first. So, here we’ve tried to explain everything as simply as possible, step by step, to make it easier to understand.
+
+If you’re already a pro-level developer, feel free to skip this part.
 ULOG3 DL Compiler — Frontend Package
 
 This package converts an incoming .onnx model into BoseIR — our internal
