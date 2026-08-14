@@ -1,6 +1,6 @@
 # ULOG3 DL Compiler — Frontend
 ![image alt](https://github.com/ULOG3/U3_fe_BOSEir/blob/dev-v0.1/boseir.png?raw=true)
-
+![image alt](https://github.com/ULOG3/U3_fe_BOSEir/blob/dev-v0.1/git.png?raw=true)
 Converts a `.onnx` model into BoseIR — our internal graph-level IR (the
 same role Relax plays for TVM), using only our chip's
 18 supported core operations.
