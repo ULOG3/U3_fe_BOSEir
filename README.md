@@ -1,6 +1,6 @@
 # ULOG3 DL Compiler — Frontend
-![image alt](https://github.com/ULOG3/U3_fe_BOSEir/blob/dev-v0.1/boseir.png?raw=true)
-![image alt](https://github.com/ULOG3/U3_fe_BOSEir/blob/dev-v0.1/git.png?raw=true)
+![image alt](./boseir.png)
+![image alt](./git.png)
 Converts a `.onnx` model into BoseIR — our internal graph-level IR (the
 same role Relax plays for TVM), using only our chip's
 18 supported core operations.
@@ -16,7 +16,7 @@ pip install -r requirements.txt
 ```bash
 python tests/make_tiny_model.py           # single-Conv sanity test
 python tests/make_convbn_model.py         # Conv-BN-ReLU (tests BN folding)
-python tests/make_residual_block_model.py # full CloudSatNet-style residual block
+python tests/make_residual_block_model.py # full residual block
 python tests/make_unsupported_op_model.py # Sigmoid (tests rejection path)
 
 python main.py models/tiny_conv.onnx
@@ -41,7 +41,7 @@ frontend/
 main.py                            command-line entry point: `python main.py <file.onnx>`
 tests/make_tiny_model.py            one-node sanity test (single Conv)
 tests/make_convbn_model.py          tests BatchNorm folding specifically
-tests/make_residual_block_model.py  tests the full CloudSatNet-style residual pattern
+tests/make_residual_block_model.py  tests the full  residual pattern
 tests/make_unsupported_op_model.py  tests the rejection path (Sigmoid)
 models/                             generated test .onnx files live here
 ```
@@ -55,8 +55,7 @@ models/                             generated test .onnx files live here
 - [x] Step 5 — unsupported ops rejected with a clear error (tested with Sigmoid)
 - [x] Step 6 — BatchNorm folding, **numerically verified** against running
       Conv+BN separately (max diff ~2e-7, i.e. float32 noise, not a bug)
-- [x] Step 7 — tested on a full Conv-BN-ReLU-Conv-BN-Add-ReLU residual block
-      (the CloudSatNet pattern) — BatchNorm fully disappears, residual Add
+- [x] Step 7 — tested on a full Conv-BN-ReLU-Conv-BN-Add-ReLU residual block — BatchNorm fully disappears, residual Add
       wires correctly
 - [x] Step 8 — shape inference + final verification pass, both working
 
@@ -81,8 +80,7 @@ models/                             generated test .onnx files live here
 
 - **QONNX `Quant`/`BipolarQuant` conversion is implemented but not tested
   against a real Brevitas-exported model yet** — only the standard-ONNX
-  path (Conv/BN/ReLU/Add) has been tested end-to-end so far. Test this
-  next against a real CloudSatNet export.
+  path (Conv/BN/ReLU/Add) has been tested end-to-end so far.
 - **Gemm decomposition** handles the common case (transA/transB, optional
   bias) but explicitly rejects non-1.0 `alpha`/`beta` rather than silently
   computing wrong values — check if your exported FC layer uses those.
