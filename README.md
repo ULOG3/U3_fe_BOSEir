@@ -25,6 +25,18 @@ python main.py models/residual_block.onnx
 python main.py models/unsupported_op.onnx   # this one is SUPPOSED to fail, on purpose
 ```
 
+## Run the test suite
+
+```bash
+pip install -r requirements-dev.txt
+pytest tests/test_pipeline.py -v
+```
+
+Checks shapes end to end, checks the BatchNorm fold against a hand-rolled
+reference conv2d + BN implementation (not just a print statement you have
+to eyeball), checks the residual block's node count and Add wiring, and
+checks that Sigmoid gets rejected with the right error.
+
 ## Structure
 
 ```
